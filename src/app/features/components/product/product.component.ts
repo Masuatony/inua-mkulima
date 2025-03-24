@@ -57,7 +57,6 @@ export class ProductComponent implements OnInit{
       this.selectedProducts.splice(index, 1);
     }
 
-    // this.totalPrice = this.selectedProducts.reduce((sum, product) => sum + product.price, 0);
   }
 
 
@@ -87,6 +86,16 @@ export class ProductComponent implements OnInit{
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.position + 1}`;
   }
+
+  toggleSelection(row: any) {
+    this.selection.toggle(row);
+    this.selectedProducts = this.selection.selected;
+
+    this.totalPrice = this.selectedProducts.reduce((total: any, product: any
+    ) => total + product.price, 0);
+
+  }
+
 
 
 }

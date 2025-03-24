@@ -1,4 +1,4 @@
-<div class="example-container"  >
+<div class="example-container" >
   <mat-toolbar class="example-toolbar" color="primary" style="linear-gradient(to right, #5b73e8, #44c4fa);">
     <button
       mat-icon-button
@@ -9,18 +9,6 @@
     </button>
     <span>Inua Mkulima App</span>
     <span class="example-spacer"></span>
-    <button
-      mat-icon-button
-      class="example-icon favorite-icon"
-      aria-label="Example icon-button with heart icon">
-      <mat-icon>favorite</mat-icon>
-    </button>
-    <button
-      mat-icon-button
-      class="example-icon"
-      aria-label="Example icon-button with share icon">
-      <mat-icon>share</mat-icon>
-    </button>
   </mat-toolbar>
   <mat-sidenav-container
     class="example-sidenav-container"
@@ -57,10 +45,10 @@
             [ngClass]="[item.class]"
             [routerLinkActiveOptions]="{ exact: true }"
           >
-            <mat-icon matListItemIcon style="color: whitesmoke">{{
+            <mat-icon matListItemIcon style="color: black">{{
                 item.icon
               }}</mat-icon>
-            <span matListItemTitle style="color: whitesmoke">{{ item.name }}</span>
+            <span matListItemTitle style="color: black">{{ item.name }}</span>
           </a>
         }
       </mat-nav-list>
@@ -71,13 +59,8 @@
       <div class="main-content">
         <div class="bottom_toolbar">
           <mat-toolbar class="bread_toolbar">
-            <div style="display: flex;">
-              <div>Inua Mkulima Subsidiary Program</div>
-              <div>
-                <button>
-                  logout
-                </button>
-              </div>
+            <div style="display: flex; justify-content: space-between">
+              <div><h4>Product details</h4></div>
             </div>
           </mat-toolbar>
         </div>

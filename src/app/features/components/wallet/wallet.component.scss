@@ -1,0 +1,36 @@
+.wallet-card {
+  background-color: #f7f9fc;
+}
+
+.balance-display {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 16px 0;
+  padding: 16px;
+  background-color: #e8f5e9;
+  border-radius: 4px;
+
+  .balance-label {
+    font-size: 16px;
+    font-weight: 500;
+    color: #333;
+  }
+
+  .balance-amount {
+    font-size: 24px;
+    font-weight: 700;
+    color: #2e7d32;
+  }
+}
+
+.top-up-form {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 16px;
+
+  .amount-field {
+    flex: 1;
+  }
+}

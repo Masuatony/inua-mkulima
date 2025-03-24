@@ -1,1 +1,264 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+@include mat.core();
+$my-primary: mat.define-palette(mat.$indigo-palette, 500);
+$my-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$my-base-color: #3f51b5;
+$my-theme: mat.define-light-theme(
+    (
+      color: (
+        primary: $my-primary,
+        accent: $my-accent,
+        base: $my-base-color,
+      ),
+      typography: mat.define-typography-config(),
+      density: 0,
+    )
+);
+
+@include mat.core-theme($my-theme);
+@include mat.button-theme($my-theme);
+@include mat.all-component-themes($my-theme);
+
+.api-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
+  padding: 0 6px 0 0;
+
+  @media screen and (min-width: 1441px) {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+  }
+
+  @media screen and (min-width: 993px) and (max-width: 1440px) {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+  }
+
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+  }
+
+  @media (max-width: 576px) {
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 10px;
+  }
+}
+
+.dash-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: row;
+  gap: 10px;
+
+  app-dash-cards {
+    flex: 1 1 calc(25% - 8px);
+    max-width: calc(25% - 8px);
+    box-sizing: border-box;
+  }
+}
+
+//Notifications
+.snackbar-danger {
+  color: #fff;
+  padding: 0.2rem;
+  --mdc-snackbar-container-color: #f44336;
+}
+
+.snackbar-success {
+  --mdc-snackbar-container-color: #3ce642;
+  color: #fff;
+  padding: 0.2rem;
+}
+
+//spinner
+@keyframes spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner:before {
+  content: '';
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  border-top-color: #000000;
+  animation: spinner 0.8s linear infinite;
+}
+
+//Text field
+.mat-mdc-text-field-wrapper {
+  --mdc-outlined-text-field-container-shape: 20px !important;
+}
+
+//Dialog border radius
+.mat-mdc-dialog-surface {
+  border-radius: 20px;
+}
+
+//Mat Sort Arrow
+html {
+  --mat-sort-arrow-color: #121010;
+}
+.example-form-field {
+  width: 100%;
+}
+
+$mint: #42d6ca;
+.special-effect {
+  &:before {
+    content: ' ';
+    border: 2px transparent solid;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translateX(0); // Ensure alignment
+    box-sizing: border-box;
+    width: 100%; // Match button width
+    height: 100%; // Match button height
+    transition: all 0.7s ease; // Smooth transition for hover effect
+    border: 5px rgba($mint, 0) solid; // Initially invisible
+  }
+
+  &:hover {
+    background-color: transparent;
+    border-radius: 20px; // Rounded button corners
+
+    &:before {
+      border-radius: 30px;
+      border: 1px $mint solid; // Visible border on hover
+      width: 100%;
+      height: 100%;
+      right: 0;
+      top: 0;
+    }
+  }
+}
+
+.search-header {
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.1),
+    0px -4px 8px rgba(0, 0, 0, 0.1),
+    4px 0px 8px rgba(0, 0, 0, 0.1),
+    -4px 0px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  margin: 10px 0 10px;
+
+  .mat-mdc-card {
+    display: flex;
+    flex-direction: row;
+    border-radius: 12px;
+    padding: 25px 12px 0 12px;
+    justify-content: space-between;
+    margin-bottom: 5px;
+    align-items: center;
+    background: #405975;
+
+    .mat-mdc-text-field__input {
+      color: white;
+    }
+
+    .form-field {
+      --mdc-outlined-text-field-container-shape: 28px !important;
+
+      mat-icon {
+        color: #42d6ca;
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .mat-mdc-card {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 25px 5px;
+      gap: 6px;
+    }
+  }
+}
+.mat-mdc-text-field__input {
+  color: white;
+}
+
+.table-header {
+  border-radius: 12px 12px 0 0;
+  background-color: #415a77;
+  margin: 10px 0 0 0;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+
+  p {
+    font-size: 17px;
+    background-color: #415a77;
+    color: #ffffff;
+  }
+}
+
+.table-holder {
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.1),
+    0px -4px 8px rgba(0, 0, 0, 0.1),
+    4px 0px 8px rgba(0, 0, 0, 0.1),
+    -4px 0px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+
+  .table-designer {
+    max-width: 100%;
+    white-space: pre;
+    overflow: auto;
+    scrollbar-width: thin;
+
+    .scroll-table {
+      overflow: auto;
+      scrollbar-width: thin;
+      border-radius: 12px;
+
+      .mat-sort-header-content {
+        font-size: 13px;
+      }
+
+      .mat-mdc-header-row {
+        th.mat-mdc-header-cell {
+          background-color: #415a77;
+          color: #ffffff;
+        }
+      }
+
+      div {
+        flex-direction: row;
+        flex-wrap: nowrap;
+
+        button {
+          margin: 4px 4px;
+        }
+
+        .delete-button {
+          //color: #7B1FA2;
+
+          &:hover {
+            //color: #ff4d4d;
+          }
+        }
+      }
+    }
+  }
+}

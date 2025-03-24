@@ -1,0 +1,132 @@
+.mat-expansion-panel {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+
+  &.mat-expansion-panel-spacing {
+    margin: 0px;
+  }
+
+  .mat-expansion-panel-body {
+    padding: 0px;
+  }
+
+  .mat-expansion-panel-header {
+    height: 40px;
+    padding: 0px 24px 0px 16px;
+    font-size: 16px !important;
+    font-weight: 450 !important;
+    letter-spacing: normal !important;
+  }
+}
+.nav_items:hover {
+  background: #7f7f7f;
+}
+.nav_items_sub {
+  padding: 3px;
+}
+.active-route {
+  border-left: 4px solid #a32a29 !important;
+  outline-width: 0;
+
+  .nav-items .nav-items-text {
+    color: #a32a29;
+  }
+
+  .nav-items .nav-items-btn .nav-items-icon svg {
+    fill: #a32a29;
+    color: #a32a29;
+  }
+
+  .mat-icon svg {
+    fill: #a32a29;
+    color: #a32a29;
+  }
+}
+
+
+.example-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.example-radio-group {
+  display: block;
+  border: 1px solid #555;
+  margin: 20px;
+  padding: 10px;
+}
+
+.mat-sidenav {
+  width: 200px;
+  //position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #ffffff;
+  //padding: 20px;
+}
+.example-container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.mat-toolbar {
+  background: radial-gradient(circle, #0d1b2a, #1b263b, #415a77);
+  color: white;
+}
+
+.example-is-mobile .example-toolbar {
+  position: fixed;
+  /* Make sure the toolbar will stay on top of the content as it scrolls past. */
+  z-index: 2;
+}
+
+h1.example-app-name {
+  margin-left: 8px;
+}
+
+.bg-setup {
+  background: radial-gradient(circle, #0d1b2a, #1b263b, #415a77);
+  color: white;
+}
+
+.example-sidenav-container {
+  /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+     causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+  flex: 1;
+}
+
+.example-is-mobile .example-sidenav-container {
+  /* When the sidenav is fixed, don't constrain the height of the sidenav container. This allows the
+     `<body>` to be our scrolling element for mobile layouts. */
+  flex: 1 0 auto;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+.main-content {
+  padding: 0.5em;
+}
+
+.profile-card {
+  text-align: center;
+  padding: 20px 20px 20px 20px;
+  object-fit: cover;
+  border-radius: 50%;
+  .user-profile {
+    margin-right: auto !important;
+  }
+  .user-image {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+  }
+}

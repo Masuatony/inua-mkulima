@@ -1,0 +1,88 @@
+<div class="example-container"  >
+  <mat-toolbar class="example-toolbar" color="primary" style="linear-gradient(to right, #5b73e8, #44c4fa);">
+    <button
+      mat-icon-button
+      class="example-icon"
+      aria-label="Example icon-button with menu icon"
+      (click)="snav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Inua Mkulima App</span>
+    <span class="example-spacer"></span>
+    <button
+      mat-icon-button
+      class="example-icon favorite-icon"
+      aria-label="Example icon-button with heart icon">
+      <mat-icon>favorite</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      class="example-icon"
+      aria-label="Example icon-button with share icon">
+      <mat-icon>share</mat-icon>
+    </button>
+  </mat-toolbar>
+  <mat-sidenav-container
+    class="example-sidenav-container"
+    [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
+
+  >
+    <mat-sidenav
+      #snav
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [fixedInViewport]="mobileQuery.matches"
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      fixedTopGap="56"
+      [opened]="true"
+    >
+      <!--      <div class="profile-card">-->
+      <!--        <div class="header">-->
+      <!--          <div class="sidebar-header">-->
+      <!--            <div class="user-profile">-->
+      <!--&lt;!&ndash;              <img src="{{ userImg }}" alt="User Image" class="user-image" />&ndash;&gt;-->
+      <!--&lt;!&ndash;                                <small>{{this.role}}</small>&ndash;&gt;-->
+      <!--&lt;!&ndash;                    [style.width.px]="isSidenavOpened ? 230 : 64 "&ndash;&gt;-->
+      <!--            </div>-->
+      <!--          </div>-->
+      <!--        </div>-->
+      <!--      </div>-->
+      <mat-divider></mat-divider>
+      <mat-nav-list>
+        @for (item of menuItems; track item) {
+          <a
+            class="nav_items_sub"
+            routerLinkActive="active-route"
+            mat-list-item
+            [routerLink]="[item.path]"
+            [ngClass]="[item.class]"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            <mat-icon matListItemIcon style="color: whitesmoke">{{
+                item.icon
+              }}</mat-icon>
+            <span matListItemTitle style="color: whitesmoke">{{ item.name }}</span>
+          </a>
+        }
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <div>
+      </div>
+      <div class="main-content">
+        <div class="bottom_toolbar">
+          <mat-toolbar class="bread_toolbar">
+            <div style="display: flex;">
+              <div>Inua Mkulima Subsidiary Program</div>
+              <div>
+                <button>
+                  logout
+                </button>
+              </div>
+            </div>
+          </mat-toolbar>
+        </div>
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

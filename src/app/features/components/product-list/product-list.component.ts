@@ -8,6 +8,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 import {Product} from "../../models/data";
 import {MatCard, MatCardActions, MatCardContent, MatCardImage} from "@angular/material/card";
 import {ProductCartComponent} from "../product-cart/product-cart.component";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-product-list',
@@ -22,7 +23,8 @@ import {ProductCartComponent} from "../product-cart/product-cart.component";
     ProductCartComponent,
     MatCardContent,
     MatCard,
-    MatCardImage
+    MatCardImage,
+    RouterLink
   ],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.scss'

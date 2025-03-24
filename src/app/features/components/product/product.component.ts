@@ -8,6 +8,7 @@ import {MatTableDataSource, MatTableModule} from "@angular/material/table";
 import {SelectionModel} from '@angular/cdk/collections';
 import {MatCheckbox} from "@angular/material/checkbox";
 import {Router} from "@angular/router";
+import {MatProgressSpinner} from "@angular/material/progress-spinner";
 
 
 @Component({
@@ -21,7 +22,8 @@ import {Router} from "@angular/router";
     MatIconButton,
     MatTableModule,
     MatCheckbox,
-    MatButton
+    MatButton,
+    MatProgressSpinner
   ],
   templateUrl: './product.component.html',
   styleUrl: './product.component.scss'
@@ -31,6 +33,7 @@ export class ProductComponent implements OnInit{
   selectedProduct:any;
   totalPrice: any;
   selectedProducts: any;
+  isLoading: boolean = false;
 
 
   displayedColumns: string[] = [ 'title','price', 'select'];
@@ -46,9 +49,19 @@ export class ProductComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.service.fetchProducts().subscribe((data) => {
-      this.items = data.products;
-      this.dataSource = new  MatTableDataSource<any>(data.products);
+    this.isLoading = true;
+    this.service.fetchProducts().subscribe({
+      next: (data) => {
+        this.isLoading = false;
+        this.items = data.products;
+        this.dataSource = new  MatTableDataSource<any>(data.products);
+      },
+      error: err => {
+        this.isLoading = false;
+      },
+      complete: () => {
+        this.isLoading = false;
+      }
     });
   }
 

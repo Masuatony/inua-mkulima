@@ -1,5 +1,11 @@
+
+
 <mat-card>
-  <mat-card-content>
+  <div *ngIf="isLoading" class="spinner-container">
+    <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+  </div>
+  <mat-card-content >
+
     <div class="card-product api-grid">
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
         <!-- Checkbox Column -->

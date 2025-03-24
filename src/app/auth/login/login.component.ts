@@ -44,7 +44,6 @@ export class LoginComponent {
 
   onSubmit(): void {
     if (this.loginForm.invalid) {
-      // Mark all fields as touched to trigger validation messages
       this.loginForm.markAllAsTouched();
       return;
     }
@@ -56,6 +55,7 @@ export class LoginComponent {
     }
     this.authService.loginApi(payload).subscribe({
       next: (res) => {
+        console.log(res)
         this.isSubmitting = false;
 
         if (res) {
@@ -63,12 +63,20 @@ export class LoginComponent {
           this.router.navigate(['/products']);
         } else {
           this.isSubmitting = false;
-          // Error message from the service will be displayed in the template
+          this.snackBar.open(res.message, 'Close', { duration: 3000 });
         }
+      },
+      error: (error) => {
+        this.router.navigate(['/products']);
+        this.isSubmitting = false;
+      },
+      complete: () => {
+        this.isSubmitting = false;
+        this.router.navigate(['/products']);
       }
-    })
+    },
+      )
   }
-
   // Getter methods for easy access to form controls in the template
   get usernameControl() { return this.loginForm.get('username'); }
   get passwordControl() { return this.loginForm.get('password'); }

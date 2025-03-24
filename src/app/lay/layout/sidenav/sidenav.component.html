@@ -9,11 +9,18 @@
     </button>
     <span>Inua Mkulima App</span>
     <span class="example-spacer"></span>
+    <span>
+      logged in as : Kimshan
+      <button mat-raised-button
+              (click)="logout()"
+      >
+        logout
+      </button>
+    </span>
   </mat-toolbar>
   <mat-sidenav-container
     class="example-sidenav-container"
     [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
-
   >
     <mat-sidenav
       #snav

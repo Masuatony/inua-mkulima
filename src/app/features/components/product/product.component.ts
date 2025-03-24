@@ -3,10 +3,11 @@ import {MatCardModule} from "@angular/material/card";
 import {ProductService} from "../services/product.service";
 import {CommonModule, NgFor} from "@angular/common";
 import {MatIcon} from "@angular/material/icon";
-import {MatIconButton} from "@angular/material/button";
+import {MatButton, MatIconButton} from "@angular/material/button";
 import {MatTableDataSource, MatTableModule} from "@angular/material/table";
 import {SelectionModel} from '@angular/cdk/collections';
 import {MatCheckbox} from "@angular/material/checkbox";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -19,7 +20,8 @@ import {MatCheckbox} from "@angular/material/checkbox";
     MatIcon,
     MatIconButton,
     MatTableModule,
-    MatCheckbox
+    MatCheckbox,
+    MatButton
   ],
   templateUrl: './product.component.html',
   styleUrl: './product.component.scss'
@@ -31,13 +33,16 @@ export class ProductComponent implements OnInit{
   selectedProducts: any;
 
 
-  displayedColumns: string[] = ['select', 'title','price'];
+  displayedColumns: string[] = [ 'title','price', 'select'];
   dataSource = new MatTableDataSource<any>();
   selection = new SelectionModel<any>(true, []);
 
 
 
-  constructor(private service : ProductService) {
+  constructor(
+    private service : ProductService,
+    private router: Router
+    ) {
   }
 
   ngOnInit(): void {
@@ -56,7 +61,6 @@ export class ProductComponent implements OnInit{
     } else {
       this.selectedProducts.splice(index, 1);
     }
-
   }
 
 
@@ -75,7 +79,6 @@ export class ProductComponent implements OnInit{
       this.selection.clear();
       return;
     }
-
     this.selection.select(...this.dataSource.data);
   }
 
@@ -94,6 +97,12 @@ export class ProductComponent implements OnInit{
     this.totalPrice = this.selectedProducts.reduce((total: any, product: any
     ) => total + product.price, 0);
 
+  }
+
+  navigateToDetails() {
+    // store in local
+    localStorage.setItem('selectedProducts', JSON.stringify(this.selectedProducts));
+    this.router.navigate(['summary'])
   }
 
 

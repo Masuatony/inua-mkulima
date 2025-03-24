@@ -15,6 +15,8 @@ import {
 import {MatLine} from "@angular/material/core";
 import {ProductService} from "../../../features/components/services/product.service";
 import {AsyncPipe, NgClass} from "@angular/common";
+import {MatDialog} from "@angular/material/dialog";
+import {LogoutDialogComponent} from "../../../shared/components/logout-dialog/logout-dialog.component";
 
 export const configSidebarItems: any[] = [
   {
@@ -84,24 +86,15 @@ export class SidenavComponent {
     private service: ProductService,
     private router: Router,
     private route: ActivatedRoute,
+    private dialog: MatDialog
     ) {
     console.log("data received", this.route.snapshot.data)
     this.headerImage = this.route.snapshot.data.toString();
     const media = inject(MediaMatcher);
 
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
-    // this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-    // this.mobileQuery.addListener(this._mobileQueryListener);
 
     this.getPictures();
-  }
-
-  toggleSide(){
-    this.isSidenavOpened =!this.isSidenavOpened;
-  }
-
-  getImage() {
-    return this.headerImage;
   }
 
   isOpen: boolean = false;
@@ -110,20 +103,9 @@ export class SidenavComponent {
   // @ts-ignore
   @Input() coreMission:Mission;
 
-  mission = 'Inspire';
-  vision= 'Impact';
-  tagline = 'Sustain';
-
   apiData: any[] = [];
 
-  logo: string = 'assets/logos/nurture-kizazi-logo.png'
-
-  // constructor(private service: FeaturesService, private router: Router) {
-  //
-  // }
-
   ngOnInit() {
-    console.log("================================",this.styleBg)
   }
 
   openMenu(){
@@ -163,4 +145,12 @@ export class SidenavComponent {
     });
   }
 
+  logout() {
+    const dialogRef =  this.dialog.open(LogoutDialogComponent, {
+      width: "450px",
+      data: {
+        action: 'login'
+      }
+    })
+  }
 }

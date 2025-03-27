@@ -1,9 +1,9 @@
-<div class="example-container" >
-  <mat-toolbar class="example-toolbar" color="primary" style="linear-gradient(to right, #5b73e8, #44c4fa);">
+<div class="example-container" role="application">
+  <mat-toolbar class="example-toolbar" color="primary" style="background: linear-gradient(to right, #5b73e8, #44c4fa);" role="banner">
     <button
       mat-icon-button
       class="example-icon"
-      aria-label="Example icon-button with menu icon"
+      aria-label="Toggle navigation menu"
       (click)="snav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
@@ -13,6 +13,7 @@
       logged in as : Kimshan
       <button mat-raised-button
               (click)="logout()"
+              aria-label="Logout from application"
       >
         logout
       </button>
@@ -21,12 +22,14 @@
   <mat-sidenav-container
     class="example-sidenav-container"
     [style.marginTop.px]="mobileQuery.matches ? 56 : 0"
+    role="main"
   >
     <mat-sidenav
       #snav
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [fixedInViewport]="mobileQuery.matches"
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [attr.aria-label]="'Main navigation menu'"
       fixedTopGap="56"
       [opened]="true"
     >
@@ -42,7 +45,7 @@
       <!--        </div>-->
       <!--      </div>-->
       <mat-divider></mat-divider>
-      <mat-nav-list>
+      <mat-nav-list role="menu">
         @for (item of menuItems; track item) {
           <a
             class="nav_items_sub"
@@ -51,8 +54,10 @@
             [routerLink]="[item.path]"
             [ngClass]="[item.class]"
             [routerLinkActiveOptions]="{ exact: true }"
+            [attr.aria-label]="item.name"
+            role="menuitem"
           >
-            <mat-icon matListItemIcon style="color: black">{{
+            <mat-icon matListItemIcon style="color: black" [attr.aria-hidden]="true">{{
                 item.icon
               }}</mat-icon>
             <span matListItemTitle style="color: black">{{ item.name }}</span>

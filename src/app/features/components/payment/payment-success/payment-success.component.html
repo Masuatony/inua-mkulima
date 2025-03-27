@@ -1,0 +1,18 @@
+<div class="success-container">
+  <mat-card class="success-card" role="region" aria-label="Payment success message">
+    <mat-card-content class="card-content">
+      <div class="success-icon">
+        <mat-icon>check_circle</mat-icon>
+      </div>
+      <h1>Payment Successful!</h1>
+      <p>Your transaction has been completed successfully.</p>
+      <div class="transaction-details">
+        <p><strong>Transaction ID:</strong> #{{Math.floor(Math.random() * 1000000)}}</p>
+        <p><strong>Date:</strong> {{Date.now() | date:'medium'}}</p>
+      </div>
+      <button mat-raised-button color="primary" (click)="goToHome()" [attr.aria-label]="'Return to products page'">
+        Return to Products
+      </button>
+    </mat-card-content>
+  </mat-card>
+</div> 
